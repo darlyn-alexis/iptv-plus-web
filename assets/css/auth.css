@@ -1,0 +1,259 @@
+:root {
+    --primary-color: #ff3b30;
+    --primary-hover: #e02b20;
+    --bg-color: #0c0f17;
+    --card-bg: rgba(20, 24, 38, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(255, 59, 48, 0.5);
+    --text-color: #ffffff;
+    --text-muted: #8a8f9d;
+    --error-bg: rgba(255, 59, 48, 0.15);
+    --error-border: rgba(255, 59, 48, 0.3);
+    --font-family: 'Outfit', sans-serif;
+    --transition-speed: 0.25s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background animated gradient effects */
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: radial-gradient(circle at 80% 20%, rgba(255, 59, 48, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 15% 80%, rgba(30, 144, 255, 0.1) 0%, transparent 45%),
+                linear-gradient(135deg, #07090e 0%, #111524 100%);
+}
+
+/* Auth Container (Glassmorphism card) */
+.auth-container {
+    width: 100%;
+    max-width: 440px;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: transform var(--transition-speed) ease;
+    margin: 1.5rem;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.logo-icon {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.5));
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo-text span {
+    color: var(--primary-color);
+}
+
+.auth-header h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.auth-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+}
+
+/* Input Fields styling */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    transition: color var(--transition-speed) ease;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.input-wrapper input:focus {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-focus);
+    box-shadow: 0 0 12px rgba(255, 59, 48, 0.2);
+}
+
+.input-wrapper input:focus + .input-icon,
+.input-wrapper:focus-within .input-icon {
+    color: var(--primary-color);
+}
+
+/* Password Toggle */
+.password-toggle-btn {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-speed) ease;
+}
+
+.password-toggle-btn:hover {
+    color: var(--text-color);
+}
+
+/* Button design */
+.submit-btn {
+    margin-top: 0.5rem;
+    padding: 0.95rem;
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+}
+
+.submit-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Error message styling */
+.error-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    background: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 10px;
+    color: #ff453a;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    animation: shake 0.4s ease-in-out;
+}
+
+.error-container i {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1.75rem;
+        margin: 1rem;
+    }
+    
+    .auth-header h1 {
+        font-size: 1.4rem;
+    }
+}
